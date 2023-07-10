@@ -1,4 +1,4 @@
-const { insertHabits, addDaysbyHabit, selectHabitById, selectHabitByOwner, fetchHabits, fetchHabitsByOwner, removeHabitById } = require("../models/habits.model");
+const { insertHabits, addDaysbyHabit, selectHabitById, selectHabitByOwner, fetchHabits, fetchHabitsByOwner, removeHabitById, fetchHabitsById } = require("../models/habits.model");
 
 exports.postHabits = (req, res, next)=>{
     const  owner = req.params;
@@ -49,6 +49,18 @@ exports.getHabitsByOwner = (req, res) =>{
   console.log(owner)
   fetchHabitsByOwner(owner).then((output)=>{
       res.status(200).send({ habits: output });
+  })
+  .catch((err)=>{
+      next( err);
+  })
+};
+
+exports.getHabitsById = (req, res) =>{
+ 
+  const habit_id = req.params;
+ 
+  fetchHabitsById(habit_id).then((output)=>{
+      res.status(200).send({ habits:output });
   })
   .catch((err)=>{
       next( err);

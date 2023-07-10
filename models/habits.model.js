@@ -99,3 +99,17 @@ exports.insertHabits = (ownerInput, habitBody) => {
             return results
         })
         } 
+
+
+     exports.fetchHabitsById = (id) =>{
+     
+      const { habit_id } = id;
+     
+      console.log(habit_id)
+           let selectHabitsByIdQueryString = `SELECT * FROM habits WHERE habit_id = $1`;
+          
+           return db.query(selectHabitsByIdQueryString,[habit_id]).then((result) => {
+           console.log(result.rows)
+            return result.rows;
+          });
+        };

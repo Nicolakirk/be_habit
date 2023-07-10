@@ -209,6 +209,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                 .expect(200)
                 .then(({ body }) => {
                     const { habits } = body;
+                    console.log(habits);
                     expect(habits).toBeInstanceOf(Array);
                     expect(habits).toHaveLength(4);
                     habits.forEach((habit) => {
@@ -277,5 +278,32 @@ describe("PATCH /api/habits/:habitid  request", () => {
                     expect(body.msg).toBe("Bad Request");
                      })
                     
+            })
+
+            describe("GET/api/habits/:id/", () => {
+                test("status:200 - responds with an  habit for an id, with all properties", () => {
+                    return request(app)
+                        .get("/api/habit/2")
+                        .expect(200)
+                        .then(({ body }) => {
+                            
+                            const { habits } = body;
+                            console.log(habits);
+                            expect(habits).toBeInstanceOf(Array);
+                            expect(habits).toHaveLength(1);
+                            habits.forEach((habit) => {
+                                expect(habit).toMatchObject({
+                                    name: expect.any(String),
+                                    owner: expect.any(String),
+                                    body: expect.any(String),
+                                    created_at: expect.any(String),
+                                    frequency: expect.any(String),
+                                    amount_days: expect.any(Number),
+                                    motivational_message: expect.any(String),
+        
+                                });
+                            });
+                        })
+                    })
             })
             

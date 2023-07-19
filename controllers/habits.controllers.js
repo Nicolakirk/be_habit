@@ -46,7 +46,7 @@ next( err);
 exports.getHabitsByOwner = (req, res) =>{
  
   const owner = req.params;
-  console.log(owner)
+
   fetchHabitsByOwner(owner).then((output)=>{
       res.status(200).send({ habits: output });
   })

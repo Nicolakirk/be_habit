@@ -69,7 +69,7 @@ exports.insertHabits = (ownerInput, habitBody) => {
      
  const { owner } = ownerOfHabit;
 
- console.log(owner)
+
       let selectHabitsByOwnerQueryString = `SELECT * FROM habits WHERE owner = $1`;
      
       return db.query(selectHabitsByOwnerQueryString,[owner]).then((result) => {
@@ -105,11 +105,11 @@ exports.insertHabits = (ownerInput, habitBody) => {
      
       const { habit_id } = id;
      
-      console.log(habit_id)
+   
            let selectHabitsByIdQueryString = `SELECT * FROM habits WHERE habit_id = $1`;
           
            return db.query(selectHabitsByIdQueryString,[habit_id]).then((result) => {
-           console.log(result.rows)
+          
             return result.rows;
           });
         };

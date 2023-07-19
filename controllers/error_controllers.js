@@ -24,6 +24,6 @@ exports.handlePSQL400s = (err, req, res, next) =>{
 };
 
 exports.handle500Statuses = (err, req, res, next) =>{
-    console.log(err);
+   
     res.satus(500).send({msg: 'Oops we made a server error'});
 };

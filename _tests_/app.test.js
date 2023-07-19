@@ -209,7 +209,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                 .expect(200)
                 .then(({ body }) => {
                     const { habits } = body;
-                    console.log(habits);
+                    
                     expect(habits).toBeInstanceOf(Array);
                     expect(habits).toHaveLength(4);
                     habits.forEach((habit) => {
@@ -288,7 +288,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                         .then(({ body }) => {
                             
                             const { habits } = body;
-                            console.log(habits);
+                          
                             expect(habits).toBeInstanceOf(Array);
                             expect(habits).toHaveLength(1);
                             habits.forEach((habit) => {
@@ -306,4 +306,60 @@ describe("PATCH /api/habits/:habitid  request", () => {
                         })
                     })
             })
+            describe("GET/api/users", () => {
+                test("status:200 - responds with an array of users, with username", () => {
+                    return request(app)
+                        .get("/api/users")
+                        .expect(200)
+                        .then(({ body }) => {
+                            const { users } = body;
+                            expect(users).toBeInstanceOf(Array);
+                            expect(users).toHaveLength(4);
+                            users.forEach((user) => {
+                                expect(user).toMatchObject({
+                                    username: expect.any(String),
+                                    
+                                });
+                            });
+                        })
+                    })
+                });
+                describe("POST /api/user ", ()=>{
+                    test("201, post request, adds a new user ", ()=>{
+                        const inputUser = {
+                            username: "nicola",
+                            name:'nic'
+                            }
+                            return request(app)
+                        .post("/api/user")
+                        .send(inputUser)
+                        .expect(201)
+                        .then(( { body } )=>{
+                          console.log(body)
+                            const { users } = body;
+                            expect(users).toBeInstanceOf(Object)
+                            expect(users).toMatchObject({
+                                username: expect.any(String),
+                                
+                            })
+                        })
+                    })
+                    test("400, returns 400 of missing keys ", ()=>{
+                        const inputUser = {
+                            username: "nicola",
+                            
+                            }
+                            return request(app)
+                        .post("/api/user")
+                        .send(inputUser)
+                        .expect(400)
+                        .then(( { body } )=>{
+                          console.log(body)
+                           
+                            expect(body.msg).toBe("Bad Request");
+                     })
+                                
+                            })
+                        })
+                    
             

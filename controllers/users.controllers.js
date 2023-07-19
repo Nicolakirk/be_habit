@@ -1,5 +1,5 @@
 
-const { fetchUsers, insertUsers } = require("../models/users.model");
+const { fetchUsers, insertUsers, fetchUserByUser } = require("../models/users.model");
 
 exports.getUsers = (req, res) =>{
     fetchUsers().then((output)=>{
@@ -28,3 +28,16 @@ Promise.all(usersPromises)
 
 
 }
+
+
+exports.getUserByUser = (req, res) =>{
+ 
+    const username = req.params;
+  
+    fetchUserByUser(username).then((output)=>{
+        res.status(200).send({ users: output });
+    })
+    .catch((err)=>{
+        next( err);
+    })
+  };

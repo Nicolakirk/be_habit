@@ -37,3 +37,17 @@ exports.insertUsers = (ownerInput) => {
               })
     
       };
+
+
+      exports.fetchUserByUser = (owner) =>{
+     
+        const { username} = owner;
+       
+       
+             let selectUserByUsersQueryString = `SELECT * FROM users WHERE username = $1`;
+            
+             return db.query(selectUserByUsersQueryString,[username]).then((result) => {
+             
+              return result.rows;
+            });
+          };

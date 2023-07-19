@@ -6,7 +6,7 @@ const { getFrequency } = require("./controllers/frequency.controllers");
 const { postHabits, patchDaysforHabits, getHabitsById, getHabitsByOwner, getHabits, deleteComments, deleteHabits } = require("./controllers/habits.controllers");
 const cors =require("cors")
 const { endpoints } = require("./controllers/api-controller");
-const { getUsers, postUsers } = require("./controllers/users.controllers");
+const { getUsers, postUsers, getUserByUser } = require("./controllers/users.controllers");
 
 
 
@@ -27,6 +27,7 @@ app.delete('/api/habits/:habit_id', deleteHabits)
 app.get('/api/habit/:habit_id', getHabitsById);
 app.get('/api/users', getUsers);
 app.post('/api/user', postUsers);
+app.get('/api/users/:username', getUserByUser)
 
 app.use(badRoute);
 app.use(handleCustomErrors);

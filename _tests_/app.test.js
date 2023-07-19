@@ -324,6 +324,33 @@ describe("PATCH /api/habits/:habitid  request", () => {
                         })
                     })
                 });
+
+                describe("GET/api/users/:username/", () => {
+                    test("status:200 - responds with a user, with all properties", () => {
+                        return request(app)
+                            .get("/api/users/butter_bridge")
+                            .expect(200)
+                            .then(({ body }) => {
+                                
+                                const { users } = body;
+                              
+                                expect(users).toBeInstanceOf(Array);
+                                expect(users).toHaveLength(1);
+                                users.forEach((user) => {
+                                            expect(user).toMatchObject({
+                                           
+                                                username: expect.any(String),
+                                                
+                                            });
+                                        });
+            
+                                   
+                               
+                            })
+                        })
+                })
+            
+        
                 describe("POST /api/user ", ()=>{
                     test("201, post request, adds a new user ", ()=>{
                         const inputUser = {

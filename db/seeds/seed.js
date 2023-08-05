@@ -71,6 +71,7 @@ const {
           body VARCHAR NOT NULL,
           created_at TIMESTAMP DEFAULT NOW(),
           amount_days INT DEFAULT 0 NOT NULL,
+          percentage INT DEFAULT 0 NOT NULL,
          motivational_message VARCHAR NOT NULL
         );`);
       })
@@ -134,7 +135,7 @@ const {
       .then(() => {
         const formattedHabitData = habitData.map(convertTimestampToDate);
         const insertHabitQueryStr = format(
-          'INSERT INTO habits (name, frequency, owner, body, created_at, amount_days, motivational_message) VALUES %L RETURNING *;',
+          'INSERT INTO habits (name, frequency, owner, body, created_at, amount_days, percentage, motivational_message) VALUES %L RETURNING *;',
           formattedHabitData.map(
             ({
               name,
@@ -143,8 +144,9 @@ const {
               body,
               created_at,
               amount_days = 0,
+              percentage = 0,
               motivational_message,
-            }) => [name, frequency, owner, body, created_at, amount_days, motivational_message]
+            }) => [name, frequency, owner, body, created_at, amount_days,percentage, motivational_message]
           )
         );
   

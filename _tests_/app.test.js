@@ -362,7 +362,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                         .send(inputUser)
                         .expect(201)
                         .then(( { body } )=>{
-                          console.log(body)
+                         
                             const { users } = body;
                             expect(users).toBeInstanceOf(Object)
                             expect(users).toMatchObject({
@@ -381,12 +381,34 @@ describe("PATCH /api/habits/:habitid  request", () => {
                         .send(inputUser)
                         .expect(400)
                         .then(( { body } )=>{
-                          console.log(body)
+                        
                            
                             expect(body.msg).toBe("Bad Request");
                      })
                                 
                             })
                         })
-                    
-            
+                        describe("PATCH /api/habit/:habitid  request", () => {
+                            test("status 200 - increments perceantage correctly and returns the updated habit ", () => {
+                                const update = { percentage: 46 };
+                                return request(app)
+                                    .patch("/api/habit/3")
+                                    .send(update)
+                                    .expect(201)
+                                    .then(({ body }) => {
+                                       console.log(body)
+                                       const { habit } = body;
+                                        
+                                        expect(habit).toMatchObject({
+                                            name: 'eat more fruit',
+                                owner: 'lurker',
+                                body: 'More info on your new habit ',
+                                created_at: "2020-11-07T06:03:00.000Z",
+                                frequency: 'Once per Week',
+                                amount_days: 5,
+                                percentage: 46,
+                                motivational_message:"yeah you can do it"
+                                        });
+                                    })
+                                })
+                            });

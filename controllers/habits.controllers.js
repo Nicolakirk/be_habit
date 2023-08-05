@@ -1,4 +1,4 @@
-const { insertHabits, addDaysbyHabit, selectHabitById, selectHabitByOwner, fetchHabits, fetchHabitsByOwner, removeHabitById, fetchHabitsById } = require("../models/habits.model");
+const { insertHabits, addDaysbyHabit, selectHabitById, selectHabitByOwner, fetchHabits, fetchHabitsByOwner, removeHabitById, fetchHabitsById, addPercentagebyHabit } = require("../models/habits.model");
 
 exports.postHabits = (req, res, next)=>{
     const  owner = req.params;
@@ -78,3 +78,18 @@ removeHabitById(habit_id).then((habits)=>{
   next(err);
 })
 };
+
+exports.patchPercentageforHabits = (req, res, next) =>{
+         
+  const { habit_id }= req.params;
+  const { percentage } = req.body
+ 
+addPercentagebyHabit(habit_id, percentage)
+.then((habit)=>{
+
+res.status(201).send({ habit })
+})
+.catch((err)=>{
+next( err);
+});
+}

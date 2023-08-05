@@ -6,6 +6,7 @@ module.exports = [
       created_at: 1604728980000,
       frequency: "Every day",
       amount_days: 0,
+      percentage:0,
       motivational_message:"yeah you can do it"
     
     },
@@ -16,6 +17,7 @@ module.exports = [
       created_at: 1604728980000,
       frequency: "Once per Week",
       amount_days: 0,
+      percentage:0,
       motivational_message:"yeah you can do it"
     
     },
@@ -27,6 +29,7 @@ module.exports = [
         created_at: 1604728980000,
         frequency: 'Once per Week',
         amount_days: 0,
+        percentage:0,
         motivational_message:"yeah you can do it"
       },
       {
@@ -37,6 +40,7 @@ module.exports = [
         created_at: 1604728980000,
         frequency: 'Once per Week',
         amount_days: 0,
+        percentage:0,
         motivational_message:"yeah you can do it"
       },
     ]

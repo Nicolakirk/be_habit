@@ -78,6 +78,8 @@ describe("GET/api/topics", () => {
                 habit_id: expect.any(Number),
                 name: expect.any(String),
                 created_at: expect.any(String),
+                amount_days: 0,
+                percentage:0,
                owner: 'butter_bridge',
                body: "read more books",
                name:"books",
@@ -220,6 +222,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                             created_at: expect.any(String),
                             frequency: expect.any(String),
                             amount_days: expect.any(Number),
+                            percentage: expect.any(Number),
                             motivational_message: expect.any(String),
 
                         });
@@ -245,6 +248,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                                 created_at: expect.any(String),
                                 frequency: expect.any(String),
                                 amount_days: expect.any(Number),
+                                percentage: expect.any(Number),
                                 motivational_message: expect.any(String),
     
                             });
@@ -299,6 +303,7 @@ describe("PATCH /api/habits/:habitid  request", () => {
                                     created_at: expect.any(String),
                                     frequency: expect.any(String),
                                     amount_days: expect.any(Number),
+                                    percentage: expect.any(Number),
                                     motivational_message: expect.any(String),
         
                                 });

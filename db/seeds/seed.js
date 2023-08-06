@@ -146,7 +146,7 @@ const {
               amount_days = 0,
               percentage = 0,
               motivational_message,
-            }) => [name, frequency, owner, body, created_at, amount_days,percentage, motivational_message]
+            }) => [name, frequency, owner, body, created_at, amount_days, percentage, motivational_message]
           )
         );
   
